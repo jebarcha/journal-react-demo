@@ -1,12 +1,5 @@
 import { types } from './../types/types';
 
-/*
- {
-    uid: 'jasdfasdfasdfasfdadsf',
-    name: 'Jose'
- }
-*/
-
 const initialState = {
     uid: 1234,
     name: 'Jose',
