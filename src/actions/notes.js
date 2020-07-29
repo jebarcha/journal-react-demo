@@ -20,11 +20,14 @@ export const startNewNote = () => {
             date: new Date().getTime()
         };
 
-        const doc = await db.collection(`${uid}/journal/notes`).add(newNote);
-        //console.log(doc);
+        try {
+            const doc = await db.collection(`${uid}/journal/notes`).add(newNote);
 
-        dispatch(activeNote(doc.id, newNote));
-        dispatch(addNewNote(doc.id, newNote));
+            dispatch(activeNote(doc.id, newNote));
+            dispatch(addNewNote(doc.id, newNote));
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
 
@@ -74,7 +77,7 @@ export const startSaveNote = (note) => {
 
         //dispatch(startLoadingNotes(uid));
         dispatch(refreshNote(note.id, note));
-        console.log(Swal);
+        //console.log(Swal);
         Swal.fire('Saved', note.title, 'success');
     }
 }
